@@ -1,3 +1,7 @@
+package calculator;
+
+import calculator.logic.CalculateLogic;
+import calculator.logic.LogicManager;
 import input.Input;
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +21,9 @@ public class Calculator {
         return Arrays.stream(split).map(Point::new).collect(Collectors.toList());
     }
 
-    public Double getDistance(Point a, Point b){
-        return Math.sqrt(Math.pow(a.getX() - b.getX(), 2) + Math.pow(a.getY() - b.getY(), 2));
+    public Double calculate(List<Point> points) {
+        CalculateLogic logic = LogicManager.getLogic(points);
+        return logic.calculate(points);
     }
+
 }
